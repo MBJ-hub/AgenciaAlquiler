@@ -654,7 +654,18 @@ public class Ventana extends javax.swing.JFrame {
      *
      * @param precio
      */
-    public void mostrarPrecioAlquiler(float precio){}
+    public void mostrarPrecioAlquiler(float precio){
+        lPrecioDia.setText(String.valueOf(precio));
+    }
+    
+    
+    
+    
+    
+    public void mostrarVehiculos(List<Vehiculo> listado){
+        vehiculoTM.setListadoVehiculos(listado);
+        tablaVehiculos.revalidate();
+    }
     
     /**
      *
@@ -709,9 +720,8 @@ public class Ventana extends javax.swing.JFrame {
             mostrarPlazas((int)tablaVehiculos.getValueAt(fila, 3));
             mostrarCapacidad((float)tablaVehiculos.getValueAt(fila, 4));
             mostrarPrecioAlquiler((float)tablaVehiculos.getValueAt(fila, 5));
-
-}
-}
+        }
+    }
     
     
     /**

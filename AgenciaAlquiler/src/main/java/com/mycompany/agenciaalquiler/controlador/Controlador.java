@@ -127,8 +127,32 @@ public class Controlador {
     
    public void listarVehiculos() {
        List<Vehiculo> listado=null;
-       listado=agenciaAlquiler.listarVehiculos(Grupo.A);
-       vista.listarVehiculos(listado);
+        switch(vista.getOrden().toUpperCase()){
+            case "MATRÍCULA":listado=agenciaAlquiler.listarVehiculos(Grupo.A);
+                break;
+            case "PRECIO ALQUILER":listado=agenciaAlquiler.listarVehiculosPorPrecio();
+                break;
+        }
+        switch(vista.getFiltroTipo()){
+            case "TURISMO":
+                break;
+            case "FURGONETA":
+                break;
+        }
+        switch(vista.getFiltroGrupo()){
+            case "TODOS":
+                break;
+            case "A": agenciaAlquiler.listarVehiculos(Grupo.A);
+                break;
+            case "B": agenciaAlquiler.listarVehiculos(Grupo.B);
+                break;
+            case "C": agenciaAlquiler.listarVehiculos(Grupo.C);
+                break;
+        }
+        if(listado!=null){
+            vista.mostrarVehiculos(listado);
+        }
+        vista.actualizarTabla();
     }
     
     public void guardarVehiculos(){
